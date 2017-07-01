@@ -1,0 +1,42 @@
+[
+	{
+		"field":"reference_id:integer",
+		"validations": "required"
+	},
+	{
+		"field":"reference_type:enum,['CUSTOMER', 'STORE', 'ORDER']",
+		"validations": "required|in:CUSTOMER, STORE, ORDER"
+	},
+	{
+		"field":"lat:decimal,11,8",
+		"validations": "required|numeric"
+	},
+	{
+		"field":"long:decimal,11,8",
+		"validations": "required|numeric"
+	},
+	{
+		"field":"address1:string,255:nullable",
+		"validations": "max:255"
+	},
+	{
+		"field":"address2:string,255:nullable",
+		"validations": "max:255"
+	},
+	{
+		"field":"city:string,100:nullable",
+		"validations": "max:100"
+	},
+	{
+		"field":"state:string,100:nullable",
+		"validations": "max:100"
+	},
+	{
+		"field":"country:string,100:nullable",
+		"validations": "max:100"
+	},
+	{
+		"field":"pincode:string,10:nullable",
+		"validations": "max:10"
+	}
+]

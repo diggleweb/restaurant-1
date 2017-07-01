@@ -1,0 +1,13 @@
+<tr>
+    {!! Form::open(['route' => '$MODEL_NAME_PLURAL_CAMEL$.index', 'method' => 'get', 'class' => "form-inline", 'id' => "search_form"]) !!}
+
+        $FIELDS$
+
+        <td>
+            <button onclick="return $('#search_form').submit()" class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </td>
+
+    {!! Form::close() !!}
+</tr>

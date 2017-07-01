@@ -1,0 +1,10 @@
+[
+	{
+		"field":"name:string,255",
+		"validations": "required|max:15"
+	},
+	{
+		"field":"phone_no:string,15:unique",
+		"validations": "required|unique:customers|max:15"
+	}
+]

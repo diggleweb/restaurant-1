@@ -1,0 +1,18 @@
+[
+	{
+		"field":"reference_id:integer",
+		"validations": "required"
+	},
+	{
+		"field":"reference_type:enum,['STORE', 'PRODUCT','STORE_CATEGORY','PROMOTION']",
+		"validations": "required|in:STORE, PRODUCT"
+	},
+	{
+		"field":"media_type:string,100",
+		"validations": "required|max:100"
+	},
+	{
+		"field":"path:string,255",
+		"validations": "required|max:255"
+	}
+]

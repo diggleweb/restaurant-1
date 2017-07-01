@@ -1,0 +1,34 @@
+[
+	{
+		"field":"store_category_id:integer:foreign:references,id:on,store_categories",
+		"validations": "required|exists:store_categories,id"
+	},
+	{
+		"field":"name:string,255",
+		"validations": "required|max:255"
+	},
+	{
+		"field":"description:text",
+		"validations": ""
+	},
+	{
+		"field":"start_time:time",
+		"validations": "date_format:h:i a"
+	},
+	{
+		"field":"end_time:time",
+		"validations": "date_format:h:i a"
+	},
+	{
+		"field":"delivery_time:integer",
+		"validations": "integer"
+	},
+	{
+		"field":"tax:decimal,5,2",
+		"validations": "numeric"
+	},
+	{
+		"field":"vat:decimal,5,2",
+		"validations": "numeric"
+	}
+]

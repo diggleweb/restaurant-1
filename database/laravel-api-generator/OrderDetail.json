@@ -1,0 +1,22 @@
+[
+	{
+		"field":"order_id:integer:foreign:references,id:on,orders",
+		"validations": "required|exists:orders,id"
+	},
+	{
+		"field":"product_id:integer:foreign:references,id:on,products",
+		"validations": "required|exists:products,id"
+	},
+	{
+		"field":"qty:decimal,10,3",
+		"validations": "required|numeric"
+	},
+	{
+		"field":"uom_id:integer:foreign:references,id:on,uoms",
+		"validations": "required|exists:uoms,id"
+	},
+	{
+		"field":"price:decimal,10,2",
+		"validations": "required|numeric"
+	}
+]

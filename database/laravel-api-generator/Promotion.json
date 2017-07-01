@@ -1,0 +1,6 @@
+[
+	{
+		"field":"description:text",
+		"validations": "required"
+	}
+]

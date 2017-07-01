@@ -1,0 +1,21 @@
+php artisan mitul.generator:scaffold_api Media --softDelete --search --fieldsFile="database/laravel-api-generator/Media.json"
+
+php artisan mitul.generator:scaffold_api Address --softDelete --search --fieldsFile="database/laravel-api-generator/Address.json"
+
+php artisan mitul.generator:scaffold_api StoreCategory --softDelete --search --fieldsFile="database/laravel-api-generator/StoreCategory.json"
+
+php artisan mitul.generator:scaffold_api Store --softDelete --search --fieldsFile="database/laravel-api-generator/Store.json"
+
+php artisan mitul.generator:scaffold_api Customer --softDelete --search --fieldsFile="database/laravel-api-generator/Customer.json"
+
+php artisan mitul.generator:scaffold_api Uom --softDelete --search --fieldsFile="database/laravel-api-generator/Uom.json"
+
+php artisan mitul.generator:scaffold_api ProductCategory --softDelete --search --fieldsFile="database/laravel-api-generator/ProductCategory.json"
+
+php artisan mitul.generator:scaffold_api Product --softDelete --search --fieldsFile="database/laravel-api-generator/Product.json"
+
+php artisan mitul.generator:scaffold_api Order --softDelete --search --fieldsFile="database/laravel-api-generator/Order.json"
+
+php artisan mitul.generator:scaffold_api OrderDetail --softDelete --search --fieldsFile="database/laravel-api-generator/OrderDetail.json"
+
+php artisan mitul.generator:scaffold_api Promotion --softDelete --search --fieldsFile="database/laravel-api-generator/Promotion.json"

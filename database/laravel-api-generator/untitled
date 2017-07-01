@@ -1,0 +1,10 @@
+customers(id,name,mobile_no);
+order_address(id,user_id,address,lat,long,is_default);
+store(id,name,description,start_time,end_time,delivery_time,address,delivery_charge,service_tax,vat);
+store_cat(id,name,type_of_display);
+product_cat(id,name);
+product(id, name, description,price,qty_type,product_cat_id,store_id);
+order(id, product_id, qty, qty_type_id,price, address,vat,tax,order_status);
+
+
+

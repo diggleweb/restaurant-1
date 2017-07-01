@@ -1,0 +1,34 @@
+[
+	{
+		"field":"order_ref_id:string,100:unique",
+		"validations": "required|unique:orders,order_ref_id|max:100"
+	},
+	{
+		"field":"customer_id:integer:foreign:references,id:on,customers",
+		"validations": "required|exists:customers,id"
+	},
+	{
+		"field":"tax:decimal,5,2",
+		"validations": "numeric"
+	},
+	{
+		"field":"vat:decimal,5,2",
+		"validations": "numeric"
+	},
+	{
+		"field":"total_price:decimal,10,2",
+		"validations": "required|numeric"
+	},
+	{
+		"field":"remarks:string,255",
+		"validations": "max:255"
+	},
+	{
+		"field":"deliver_at:timestamp",
+		"validations": "date_format:Y-m-d h:i:s"
+	},
+	{
+		"field":"order_status:enum,['PENDING', 'DELIVERED', 'PROCESSING', 'CANCELED']",
+		"validations": "in:PENDING, DELIVERED, PROCESSING, CANCELED"
+	}
+]

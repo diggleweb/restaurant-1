@@ -1,0 +1,26 @@
+[
+	{
+		"field":"store_id:integer:foreign:references,id:on,stores",
+		"validations": "required|exists:stores,id"
+	},
+	{
+		"field":"product_category_id:integer:foreign:references,id:on,product_categories",
+		"validations": "required|exists:product_categories,id"
+	},
+	{
+		"field":"name:string,255",
+		"validations": "required|max:255"
+	},
+	{
+		"field":"description:text",
+		"validations": ""
+	},
+	{
+		"field":"price:decimal,10,2",
+		"validations": "required|numeric"
+	},
+	{
+		"field":"uom_id:integer:foreign:references,id:on,uoms",
+		"validations": "required|exists:uoms,id"
+	}
+]
