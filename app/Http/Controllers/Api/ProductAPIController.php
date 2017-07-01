@@ -30,8 +30,7 @@ class ProductAPIController extends AppApiBaseController
 	    $input = $request->all();
 
 		$result = $this->productRepository->search($input);
-
-		$products = $result[0]->get();
+		$products = !empty($input["no_pagination"])?$result[0]->get():$result[0]->paginate();
 
 		return Response::json(ResponseManager::makeResult($products->toArray(), "Products retrieved successfully."));
 	}
