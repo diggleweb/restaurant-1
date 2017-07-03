@@ -27,17 +27,18 @@ Route::group([
 		Route::get('storeCategories/getProducts/{id}', [
 		    'as' => 'storeCategories.getProducts',
 		    'uses' => 'StoreCategoryAPIController@getProducts',
-		]);
+		])
+		->where('id', '[0-9]+');
 		Route::get('fullTextSearch', [
 		    'as' => 'products.fullTextSearch',
 		    'uses' => 'ProductAPIController@fullTextSearch',
-		])
-		->where('id', '[0-9]+');
+		]);
 		Route::resource('storeCategories', 'StoreCategoryAPIController');
 		Route::resource('productCategories', 'ProductCategoryAPIController');
 		Route::resource('products', 'ProductAPIController');
 		Route::resource('orders', 'OrderAPIController');
 		Route::resource('promotions', 'PromotionAPIController');
+		Route::resource('uoms', 'UomAPIController');
 		Route::get('delivery-charge-setup', function(){
 			return DB::table('delivery_charge_setup')->get();
 		});
