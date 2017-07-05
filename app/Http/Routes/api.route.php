@@ -33,6 +33,10 @@ Route::group([
 		    'as' => 'products.fullTextSearch',
 		    'uses' => 'ProductAPIController@fullTextSearch',
 		]);
+		Route::post('products/{product}', [
+		    'as' => 'products.update.post',
+		    'uses' => 'ProductAPIController@update',
+		]);
 		Route::resource('storeCategories', 'StoreCategoryAPIController');
 		Route::resource('productCategories', 'ProductCategoryAPIController');
 		Route::resource('products', 'ProductAPIController');
