@@ -43,3 +43,17 @@ Route::group([
 			return DB::table('delivery_charge_setup')->get();
 		});
 });
+
+
+Route::post('/ttttt',function()
+{
+	dd(Input::file('file'));
+    //I am storing the image in the public/images folder 
+    $destinationPath = 'images/';
+
+    $newImageName='MyImage.jpg';
+
+    //Rename and move the file to the destination folder 
+    Input::file('file')->move($destinationPath,$newImageName);
+
+});
