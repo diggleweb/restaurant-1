@@ -99,6 +99,7 @@ class ProductRepository
 	 */
 	public function store($input)
 	{
+		return $input;
 		$product = Product::create($input);
 		$fileList = !empty($input['images']) ? $input['images'] : null;
 
