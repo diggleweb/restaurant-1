@@ -137,7 +137,7 @@ class ProductRepository
 	 */
 	public function update($product, $input)
 	{
-		return $input;
+		// return $input;
 		$product->fill($input);
 		if (!empty($input['images']) 
 			&& count($input['images']) > 0 
