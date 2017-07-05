@@ -137,6 +137,9 @@ class ProductRepository
 	 */
 	public function update($product, $input)
 	{
+
+			print_r($input);
+			die();
 		// return $input;
 		$product->fill($input);
 		if (!empty($input['images']) 
