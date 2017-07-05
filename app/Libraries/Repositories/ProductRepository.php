@@ -142,9 +142,9 @@ class ProductRepository
 		if (!empty($input['images']) 
 			&& count($input['images']) > 0 
 			&& !empty($input['images'][0])) {
+			$fileList = $input['images'];
 			print_r($fileList);
 			die();
-			$fileList = $input['images'];
 			$mediaRepo = new MediaRepository();
         	$mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
 		}
