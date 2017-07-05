@@ -138,7 +138,7 @@ class ProductRepository
 	public function update($product, $input)
 	{
 
-			print_r($input);
+			var_dump($input);
 			die();
 		// return $input;
 		$product->fill($input);
