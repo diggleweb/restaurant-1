@@ -42,17 +42,18 @@ Route::group([
 		Route::get('delivery-charge-setup', function(){
 			return DB::table('delivery_charge_setup')->get();
 		});
-Route::post('/ttttt',function()
-{
-	dd(Input::file('file'));
-    //I am storing the image in the public/images folder 
-    $destinationPath = 'images/';
+	Route::post('/ttttt',function(Request $request)
+	{
+		dd($request->all());
+		// dd(Input::file('file'));
+		//I am storing the image in the public/images folder 
+		$destinationPath = 'images/';
 
-    $newImageName='MyImage.jpg';
+		$newImageName='MyImage.jpg';
 
-    //Rename and move the file to the destination folder 
-    Input::file('file')->move($destinationPath,$newImageName);
+		//Rename and move the file to the destination folder 
+		Input::file('file')->move($destinationPath,$newImageName);
 
-});
+	});
 });
 
