@@ -138,8 +138,8 @@ class ProductRepository
 	public function update($product, $input)
 	{
 
-			dump($_FILES);
-			dd($input);
+			print_r($_FILES);
+			print_r($input);
 			die();
 		// return $input;
 		$product->fill($input);
