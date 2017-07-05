@@ -30,7 +30,7 @@ class Product extends AppBaseModel
 		"name" => "required|max:255",
 		"price" => "required|numeric",
 		"uom_id" => "required|exists:uoms,id",
-		"images" => "isImageListUpload|max:10000",
+		// "images" => "isImageListUpload|max:10000",
 	];
 	/**
 	* relations
