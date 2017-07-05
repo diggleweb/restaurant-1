@@ -44,6 +44,7 @@ Route::group([
 		});
 	Route::post('/ttttt',function(Request $request)
 	{
+		dump("-----lol---------");
 		dd($request->all());
 		// dd(Input::file('file'));
 		//I am storing the image in the public/images folder 
