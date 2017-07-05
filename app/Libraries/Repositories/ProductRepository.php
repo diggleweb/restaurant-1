@@ -138,8 +138,8 @@ class ProductRepository
 	public function update($product, $input)
 	{
 
-		dump("-----lol---------");
-		dd($input);
+		// dump("-----lol---------");
+		// dd($input);
 		// return $input;
 		$product->fill($input);
 		if (!empty($input['images']) 
