@@ -101,6 +101,10 @@ class ProductRepository
 	{
 		$product = Product::create($input);
 		$fileList = !empty($input['images']) ? $input['images'] : null;
+
+		print_r($fileList);
+		die();
+		
 		if (!empty($fileList) 
 			&& count($fileList) > 0
 			&& !empty($fileList[0]) ) {
