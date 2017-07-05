@@ -100,7 +100,7 @@ class ProductRepository
 	public function store($input)
 	{
 		$product = Product::create($input);
-		$fileList = $input['images'];
+		$fileList = !empty($input['images']) ? $input['images'] : null;
 		if (!empty($fileList) 
 			&& count($fileList) > 0
 			&& !empty($fileList[0]) ) {
