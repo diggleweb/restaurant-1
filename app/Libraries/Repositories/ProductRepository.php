@@ -139,7 +139,7 @@ class ProductRepository
 	{
 
 		dump("-----lol---------");
-		dd($request->all());
+		dd($input);
 		// return $input;
 		$product->fill($input);
 		if (!empty($input['images']) 
