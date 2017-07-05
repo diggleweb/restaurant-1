@@ -99,7 +99,6 @@ class ProductRepository
 	 */
 	public function store($input)
 	{
-		return $input;
 		$product = Product::create($input);
 		$fileList = !empty($input['images']) ? $input['images'] : null;
 
@@ -107,8 +106,6 @@ class ProductRepository
 		if (!empty($fileList) 
 			&& count($fileList) > 0
 			&& !empty($fileList[0]) ) {
-		print_r($fileList);
-		die();
 			$mediaRepo = new MediaRepository();
         	$media = $mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
         	// dd($media);
@@ -140,10 +137,13 @@ class ProductRepository
 	 */
 	public function update($product, $input)
 	{
+		return $input;
 		$product->fill($input);
 		if (!empty($input['images']) 
 			&& count($input['images']) > 0 
 			&& !empty($input['images'][0])) {
+			print_r($fileList);
+			die();
 			$fileList = $input['images'];
 			$mediaRepo = new MediaRepository();
         	$mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
