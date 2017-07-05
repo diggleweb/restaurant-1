@@ -42,9 +42,6 @@ Route::group([
 		Route::get('delivery-charge-setup', function(){
 			return DB::table('delivery_charge_setup')->get();
 		});
-});
-
-
 Route::post('/ttttt',function()
 {
 	dd(Input::file('file'));
@@ -57,3 +54,5 @@ Route::post('/ttttt',function()
     Input::file('file')->move($destinationPath,$newImageName);
 
 });
+});
+
