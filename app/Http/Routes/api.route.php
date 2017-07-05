@@ -2,7 +2,7 @@
 /**
  * for api routes
 */
-
+use Illuminate\Http\Request;
 Route::group([
 		'middleware' => ['api'],
 		'namespace' => 'Api',
@@ -42,6 +42,7 @@ Route::group([
 		Route::get('delivery-charge-setup', function(){
 			return DB::table('delivery_charge_setup')->get();
 		});
+
 	Route::post('/ttttt',function(Request $request)
 	{
 		dump("-----lol---------");
