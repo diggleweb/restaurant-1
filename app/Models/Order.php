@@ -55,8 +55,12 @@ class Order extends AppBaseModel
 		  		'orderDetails' => function($query)
 				{
 				    $query->leftJoin('products', 'order_details.product_id', '=', 'products.id')
+						->leftJoin('media', function ($join) {
+							$join->on('media.reference_id', '=', 'products.id')->on('media.reference_type', '=', DB::raw('PRODUCT'));
+						})
 				    	->leftJoin('uoms', 'order_details.uom_id', '=', 'uoms.id')
-				    	->select('order_details.*', 'products.name as product_name', 'uoms.name as uom');
+						 ->groupBy('products.id')
+				    	->select('order_details.*', 'products.name as product_name', 'uoms.name as uom, media.path as product_image');
 				},
 		  		'customer' => function($query)
 				{

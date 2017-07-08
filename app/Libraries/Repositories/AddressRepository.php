@@ -144,6 +144,7 @@ class AddressRepository
 	 */
 	public function saveAddressesFromLatLong($reference_id, $reference_type, $lat, $long)
 	{
+		// dd($reference_id, $reference_type, $lat, $long);
 		if(empty($lat) || empty($long)){
 			return false;
 		}
@@ -206,7 +207,6 @@ class AddressRepository
 		$data = @file_get_contents($url);
 		// Parse the json response
 		$jsondata = json_decode($data,true);
-
 		// If the json data is invalid, return empty array
 		if (!$this->check_status($jsondata))   return array();
 

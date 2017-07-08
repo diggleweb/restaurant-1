@@ -65,7 +65,8 @@ class OrderRepository
 		}
 		if (isset($input['address']) && count($input['address']>0)) {
 			$addressRepo = new AddressRepository();
-			$media = $addressRepo->saveAddresses($order->id, 'ORDER',$input['address']);
+			// $media = $addressRepo->saveAddresses($order->id, 'ORDER',$input['address']);
+			$media = $addressRepo->saveAddressesFromLatLong($order->id, 'ORDER',$input['address'][0]["lat"],$input['address'][0]["long"]);
 		}
 		return $order;
 	}
