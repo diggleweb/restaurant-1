@@ -58,6 +58,9 @@ class OrderRepository
 	{
 		$input['order_ref_id'] = $input['customer_id'].'-'.time().'-'.str_random(10);
 		$input['order_status'] = 'PENDING';
+		if(empty($input["deliver_at"])){
+			$input["deliver_at"] = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +30 minutes"));
+		}
 		$order = Order::create($input);
 		if (isset($input['order_detail']) && count($input['order_detail']>0)) {
 			$orderDetailRepo = new OrderDetailRepository();
