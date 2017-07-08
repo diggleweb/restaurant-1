@@ -2,6 +2,7 @@
 
 use App\Models\AppBaseModel as AppBaseModel;
 use DB;
+use Config;
 
 class Order extends AppBaseModel
 {
@@ -48,12 +49,13 @@ class Order extends AppBaseModel
         return $this->morphMany('App\Models\Address', 'reference');
     }
     public static function withRelation(){
+		$base_path = asset(Config::get('constant.site.upload_dir.product')) . "/";
     	return self::with([
 		  		'addressList' => function($query)
 				{
 				    $query->select('id', 'reference_id', 'address1', 'address2', 'city', 'state', 'country','pincode');
 				},
-		  		'orderDetails' => function($query)
+		  		'orderDetails' => function($query) use($base_path)
 				{
 				    $query->leftJoin('products', 'order_details.product_id', '=', 'products.id')
 						->leftJoin('media', function ($join) {
@@ -61,7 +63,8 @@ class Order extends AppBaseModel
 						})
 				    	->leftJoin('uoms', 'order_details.uom_id', '=', 'uoms.id')
 						 ->groupBy('products.id')
-				    	->select('order_details.*', 'products.name as product_name', 'uoms.name as uom, media.path as product_image');
+				    	->select('order_details.*', 'products.name as product_name', 'uoms.name as uom')
+						->addSelect(DB::raw("CONCAT('$base_path', media.path) as product_image"));
 				},
 		  		'customer' => function($query)
 				{

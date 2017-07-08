@@ -31,7 +31,8 @@ class OrderAPIController extends AppApiBaseController
 
 		$result = $this->orderRepository->search($input);
 
-		$orders = $result[0]->get();
+		
+		$orders = !empty($input["no_pagination"])?$result[0]->get():$result[0]->paginate();
 
 		return Response::json(ResponseManager::makeResult($orders->toArray(), "Orders retrieved successfully."));
 	}
