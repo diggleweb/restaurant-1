@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use App\Models\AppBaseModel as AppBaseModel;
+use DB;
 
 class Order extends AppBaseModel
 {
@@ -56,7 +57,7 @@ class Order extends AppBaseModel
 				{
 				    $query->leftJoin('products', 'order_details.product_id', '=', 'products.id')
 						->leftJoin('media', function ($join) {
-							$join->on('media.reference_id', '=', 'products.id')->on('media.reference_type', '=', DB::raw('PRODUCT'));
+							$join->on('media.reference_id', '=', 'products.id')->on('media.reference_type', '=', DB::raw("'PRODUCT'"));
 						})
 				    	->leftJoin('uoms', 'order_details.uom_id', '=', 'uoms.id')
 						 ->groupBy('products.id')
