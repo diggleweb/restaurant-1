@@ -80,7 +80,7 @@ class OrderDetailRepository
             	$upCount++;
             }
 		}
-		// dd($orderDetails);
+		// dd(count($orderDetails));
 		if (count($orderDetails) > 0) {
 			OrderDetail::insert($orderDetails);
 			$inCount++;

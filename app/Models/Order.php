@@ -62,7 +62,7 @@ class Order extends AppBaseModel
 							$join->on('media.reference_id', '=', 'products.id')->on('media.reference_type', '=', DB::raw("'PRODUCT'"));
 						})
 				    	->leftJoin('uoms', 'order_details.uom_id', '=', 'uoms.id')
-						 ->groupBy('products.id')
+						 ->groupBy('order_details.order_id', 'products.id')
 				    	->select('order_details.*', 'products.name as product_name', 'uoms.name as uom')
 						->addSelect(DB::raw("CONCAT('$base_path', media.path) as product_image"));
 				},
