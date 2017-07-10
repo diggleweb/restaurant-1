@@ -46,7 +46,7 @@ class ProductRepository
             }
         };
 
-        return [$query->orderBy('created_at', 'desc'), $attributes];
+        return [$query->orderBy('updated_at', 'desc'), $attributes];
 
     }
 	public function fullTextSearch($input)
