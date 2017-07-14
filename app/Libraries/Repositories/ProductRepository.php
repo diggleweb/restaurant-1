@@ -97,7 +97,54 @@ class ProductRepository
         	$media = $mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
         	// dd($media);
 		}
+		$this->push($product->id, $product->name);
 		return $product;
+	}
+
+	public function push(int $product_id, string $product_name)
+	{
+		$curl = curl_init();
+		$push_data = [
+			"profile" => env("PUSH_API_PROFILE"),
+			"send_to_all" => true,
+			"priority" => 2,
+			"content-available" => 1,
+			"notification" => [
+				"title" => "New Food",
+				"message" => "A new food - $product_name ready to order",
+				"payload" => [
+					"product_id" => $product_id
+				]
+			]
+		];
+		curl_setopt_array(
+			$curl, [
+				CURLOPT_URL => env("PUSH_API_ENDPOINT"),
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => "",
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 30,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => "POST",
+				CURLOPT_POSTFIELDS => json_encode($push_data),
+				CURLOPT_HTTPHEADER => [
+					"authorization: Bearer " . env("PUSH_API_TOKEN"),
+					"cache-control: no-cache",
+					"content-type: application/json",
+				],
+			]
+		);
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+			echo "cURL Error #:" . $err;
+		} else {
+			echo $response;
+		}
 	}
 
 	/**
@@ -124,17 +171,11 @@ class ProductRepository
 	 */
 	public function update($product, $input)
 	{
-
-		// dump("-----lol---------");
-		// dd($input);
-		// return $input;
 		$product->fill($input);
 		if (!empty($input['images']) 
 			&& count($input['images']) > 0 
 			&& !empty($input['images'][0])) {
 			$fileList = $input['images'];
-			// print_r($fileList);
-			// die();
 			$mediaRepo = new MediaRepository();
         	$mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
 		}
