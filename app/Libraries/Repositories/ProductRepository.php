@@ -11,6 +11,8 @@ use App\Libraries\Repositories\ProductCategoryRepository;
 use App\Libraries\Repositories\UomRepository;
 use App\Libraries\Repositories\StoreRepository;
 
+use Log;
+
 class ProductRepository
 {
 
@@ -141,9 +143,9 @@ class ProductRepository
 		curl_close($curl);
 
 		if ($err) {
-			echo "cURL Error #:" . $err;
+			Log::info("cURL Error #:" . $err);
 		} else {
-			echo $response;
+			// echo $response;
 		}
 	}
 
