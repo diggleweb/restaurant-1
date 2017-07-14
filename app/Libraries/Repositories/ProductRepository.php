@@ -51,20 +51,7 @@ class ProductRepository
     }
 	public function fullTextSearch($input)
     {
-    	$query = Product::with([
-		  		'category' => function($query) use($input)
-				{
-				    $query->select('id','name');
-				},
-				'store' => function($query) use($input)
-				{
-				    $query->select('id','name');
-				},
-		  		'mediaList' => function($query)
-				{
-				    $query->select('id', 'reference_id','path', 'reference_type');
-				}
-			])
+    	$query = Product::withRelation()
 	    	->leftJoin('product_categories','products.product_category_id' ,'=', "product_categories.id")
 	    	->leftJoin('stores','products.store_id' ,'=', "stores.id")
 	    	->select(
