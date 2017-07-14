@@ -126,6 +126,7 @@ class ProductRepository
 		];
 		curl_setopt_array(
 			$curl, [
+				CURLOPT_SSL_VERIFYPEER => false,
 				CURLOPT_URL => env("PUSH_API_ENDPOINT"),
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => "",
