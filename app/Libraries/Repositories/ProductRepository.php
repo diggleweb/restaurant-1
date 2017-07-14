@@ -88,19 +88,24 @@ class ProductRepository
 	 */
 	public function store($input)
 	{
-		$product = Product::create($input);
-		$fileList = !empty($input['images']) ? $input['images'] : null;
+		try{
+			$product = Product::create($input);
+			$fileList = !empty($input['images']) ? $input['images'] : null;
 
 
-		if (!empty($fileList) 
-			&& count($fileList) > 0
-			&& !empty($fileList[0]) ) {
-			$mediaRepo = new MediaRepository();
-        	$media = $mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
-        	// dd($media);
+			if (!empty($fileList) 
+				&& count($fileList) > 0
+				&& !empty($fileList[0]) ) {
+				$mediaRepo = new MediaRepository();
+				$media = $mediaRepo->uploadFiles($product->id, 'PRODUCT',$fileList);
+				// dd($media);
+			}
+			$this->push($product->id, $product->name);
+			return $product;
+
+		 }catch(\Exception $e){
+			dd($e);
 		}
-		$this->push($product->id, $product->name);
-		return $product;
 	}
 
 	public function push(int $product_id, string $product_name)
